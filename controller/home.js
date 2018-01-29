@@ -11,13 +11,14 @@ module.exports = {
   tosignup: async(ctx,next)　=> {
 	  const id = ctx.params.id;
 	 // console.log(id);
-	    console.log("11111111111111111111111111111111111111111111");
+	    //console.log("11111111111111111111111111111111111111111111");
 	  await ctx.render("signup",{title:"NODEJS"})
   },
   
   signup: async(ctx, next) => {            
     let params = ctx.request.body
-	  console.log(email+"11111121111111111111111111111");
+	
+	 // console.log(params.email+"11111121111111111111111111111");
 	let tUser = new User({
 		username:params.username,
 		password:params.password,
@@ -25,7 +26,7 @@ module.exports = {
 		email:params.email,
 		
 	});
-  console.log(email+"1111111111111111131111111111111111");
+//  console.log(params.email+"1111111111111111131111111111111111");
      await tUser.save(); 
 
        await ctx.redirect("/",{title:params.username});	 
