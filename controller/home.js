@@ -10,22 +10,25 @@ module.exports = {
 
   tosignup: async(ctx,next)　=> {
 	  const id = ctx.params.id;
-	  console.log(id);
-	  
+	 // console.log(id);
+	    console.log("11111111111111111111111111111111111111111111");
 	  await ctx.render("signup",{title:"NODEJS"})
   },
   
   signup: async(ctx, next) => {            
     let params = ctx.request.body
-	
+	  console.log(email+"11111121111111111111111111111");
 	let tUser = new User({
-		id:params.id,
-		pwd:params.pwd
+		username:params.username,
+		password:params.password,
+		session:params.sessionID,
+		email:params.email,
+		
 	});
-  
+  console.log(email+"1111111111111111131111111111111111");
      await tUser.save(); 
 
-       await ctx.redirect("/",{title:params.id});	 
+       await ctx.redirect("/",{title:params.username});	 
     }
   
 }
