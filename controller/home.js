@@ -16,9 +16,9 @@ module.exports = {
   signup: async(ctx, next) => {            
     let params = ctx.request.body    //从客户端获取到的参数 ,session 为null？
 	
-     let statu = await User.find({username:params.username})
+     let statu = await User.findOne({username:params.username})
 	 
-	 if(statu.length != 0){
+	 if(statu){
 		 console.log(statu);
 	 }
 	 
@@ -38,19 +38,38 @@ module.exports = {
    //登录
    tosignin: async(ctx,next)　=> {
 
-   
 	  await ctx.render("signin")
+	  
 	},
   
     signin: async(ctx, next) => {            
-    let params = ctx.request.body
+    let params = ctx.request.body;
+	 
+	let statu = await User.findOne({username:params.username});
 	
-	let tUser = new User({
-		username:params.username,
-		password:params.password,
-		
-	})
-	},
+		if(statu){
+			console.log(statu);
+		   console.log(statu.password);
+		   console.log(params.password);
+		   
+		   if(statu.password == params.password){
+			   console.log("登录成功");
+			   
+			   await ctx.redirect("/");
+		   }
+		   else{
+			   console.log("不能登录成功");
+			   await ctx.render("signin")
+		   }
+			
+		}
+	   else{
+		   
+		   console.log("未注册")
+		   
+	   }
+	 
+	}
    
    
    
