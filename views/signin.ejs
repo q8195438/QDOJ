@@ -1,0 +1,28 @@
+<%- include header %>
+<div class="container">
+ <div class="login">
+        <div class="login-screen">
+          <div class="login-icon">
+            <h4>Welcome to <small>Node OJ</small></h4>
+          </div>
+<form action = '/signin'  method='post'>
+          <div class="login-form">
+            <div class="control-group">
+              <input id='username' class="form-control login-field" value="" placeholder="Enter your name" name="username" />
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="control-group">
+              <input type='password' id='password' class="form-control login-field" value="" placeholder="Password" name="password" />
+             <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+			</div>
+</form>
+            <button type='submit' class="btn btn-primary btn-lg btn-block" id="login0" >Sign in</button>
+            <a class="login-link" href="#">Lost your password?</a>
+			
+          
+        </div>
+    </div>
+</div>
+<%- include footer %>

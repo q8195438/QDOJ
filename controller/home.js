@@ -4,13 +4,13 @@ const userDb = require("../dbhelper/userDb");
 module.exports = {
   index: async(ctx, next) => {
 	
-    await ctx.render("index", { title:"NODEJS"})
+    await ctx.render("index")
   },
 
   tosignup: async(ctx,next)　=> {
 	  const id = ctx.params.id;
 
-	  await ctx.render("signup",{title:"NODEJS"})
+	  await ctx.render("signup")
   },
   
   signup: async(ctx, next) => {            
@@ -33,7 +33,26 @@ module.exports = {
 		 await tUser.save();
 		 await ctx.redirect('/')
 	 }
-   }
+   },
+   
+   //登录
+   tosignin: async(ctx,next)　=> {
+
+   
+	  await ctx.render("signin")
+	},
+  
+    signin: async(ctx, next) => {            
+    let params = ctx.request.body
+	
+	let tUser = new User({
+		username:params.username,
+		password:params.password,
+		
+	})
+	},
+   
+   
    
 }
 	
