@@ -1,16 +1,19 @@
 const router = require('koa-router')()
-const HomeController = require('./controller/home')
+const Home = require('./controller/home');
+const HomeSignup = require("./controller/Signup");
+const HomeSignin = require('./controller/Signin');
+
 module.exports = (app) => {
-  router.get( '/', HomeController.index)
+  router.get( '/', Home.index)
   
   //注册
-  router.get('/tosignup', HomeController.tosignup);  
-  router.post('/signup', HomeController.signup);	
+  router.get('/tosignup', HomeSignup.tosignup);  
+  router.post('/signup', HomeSignup.signup);	
   
   //登录
  
-  router.get('/tosignin', HomeController.tosignin); 
-  router.post('/signin', HomeController.signin);
+  router.get('/tosignin', HomeSignin.tosignin); 
+  router.post('/signin', HomeSignin.signin);
   
   
   app.use(router.routes())
