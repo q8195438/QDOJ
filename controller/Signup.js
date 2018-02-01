@@ -4,6 +4,8 @@
 	 //注册
    tosignup: async(ctx,next)　=> {
 	  const id = ctx.params.id;   //！！！ 如果登录的用户则不能注册,主页渲染要添加
+	  
+	  //渲染的话 加一个if判断句把。。。
 
 	  await ctx.render("signup")
     },
